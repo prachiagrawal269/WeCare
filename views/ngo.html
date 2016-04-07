@@ -29,13 +29,51 @@
     <div class="tcenter subheader">
         <span class="created_at"><%= formatDate(ngo.metadata.joined) %></span>
     </div>
-    <div class="tbpadding10">
-        <%= ngo.about %>
+    <div class="mission">Mission : &nbsp;<span><I><%= ngo.mission %></I></span></div>
+
+    <!-- What do we do -->
+    <div class="about">
+        <div class="what_do_we_do" >
+            What do we do ?
+        </div>
+        <div class="tbpadding10 description">
+            <%= ngo.about %>
+        </div>
     </div>
-    <div>
-    <div>Mission &nbsp; : <span><%= ngo.mission %></span></div>
-    <%if (ngo.contact) { %>
-            <div class="tbpadding10">
+    
+    <!--Campaigns-->
+    <div class="campaigns">
+         <div class="about">
+            <div class="campaigns">
+                Associated campaigns
+            </div>
+        </div>
+        <div> 
+            <div class="campaign-card-container">
+            <% for(var i=0; i<ngo.campaigns.length; i++) { %>
+                <div class="campaign-card">
+                    <a href='/campaign/<%= ngo.campaigns[i]._id %>'>
+                        <img src='<%= ngo.campaigns[i].img %>' width="192"/>
+                    </a>
+                    <div class="campaign-meta">
+                        <div class="campaign-name"><%= ngo.campaigns[i].name %></div>
+                        <div class="shortDesc"><%= ngo.campaigns[i].shortDesc %></div>
+                    </div>
+                
+                </div>
+            <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Social network-->
+
+    <div class="social_networks">
+        <div class="about campaigns">Contact us</div>
+
+     
+         <%if (ngo.contact) { %>
+            <div class="tbpadding10 social_icons">
                 <%if (ngo.contact.website) { %>
                     <span>
                         <a href="<%= ngo.contact.website %>">
@@ -66,24 +104,9 @@
                 <% } %>
             </div>
         <% } %>
-    <div> 
-        <div class="campaign-card-container">
-        <% for(var i=0; i<ngo.campaigns.length; i++) { %>
-            <div class="campaign-card">
-                <a href='/campaign/<%= ngo.campaigns[i]._id %>'>
-                    <img src='<%= ngo.campaigns[i].img %>' width="192"/>
-                </a>
-                <div class="campaign-meta">
-                    <div class="campaign-name"><%= ngo.campaigns[i].name %></div>
-                    <div class="shortDesc"><%= ngo.campaigns[i].shortDesc %></div>
-                </div>
-            
-            </div>
-        <% } %>
-        </div>
-    </div>
 
     </div>
+   
 </div>
 <div class="footer">
     <div class="padding10">
