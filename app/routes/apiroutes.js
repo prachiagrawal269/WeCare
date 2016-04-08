@@ -27,6 +27,4 @@ module.exports = function(self){
         Campaign.getCampaignMinimalDetails(req, res);
     });
 
-    
- 
 }
